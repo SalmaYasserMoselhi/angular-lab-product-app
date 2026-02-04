@@ -1,0 +1,78 @@
+<div
+  class="min-h-screen bg-gradient-to-b from-slate-100 to-white flex items-center justify-center px-4 md:px-6 py-10"
+>
+  <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 w-full max-w-md">
+    <div class="text-center mb-8">
+      <div
+        class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4"
+      >
+        <i class="fa-solid fa-user text-slate-600 text-2xl"></i>
+      </div>
+      <h1 class="text-2xl font-bold text-slate-900">Welcome back</h1>
+      <p class="text-slate-500 text-sm mt-1">Sign in to your account</p>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          [pattern]="emailPattern"
+          #emailInput="ngModel"
+          class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all"
+          [class.border-red-500]="emailInput.invalid && (emailInput.touched || submitted)"
+          [class.border-slate-200]="!(emailInput.invalid && (emailInput.touched || submitted))"
+          placeholder="user@example.com"
+        />
+        @if (emailInput.invalid && (emailInput.touched || submitted)) {
+          <div class="text-red-500 text-xs mt-1">
+            @if (emailInput.errors?.['required']) {
+              <p>Email is required</p>
+            }
+            @if (emailInput.errors?.['pattern']) {
+              <p>Please enter a valid email address</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-slate-700 mb-2">Password</label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          #passwordInput="ngModel"
+          class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all"
+          [class.border-red-500]="passwordInput.invalid && (passwordInput.touched || submitted)"
+          [class.border-slate-200]="
+            !(passwordInput.invalid && (passwordInput.touched || submitted))
+          "
+        />
+        @if (passwordInput.invalid && (passwordInput.touched || submitted)) {
+          <div class="text-red-500 text-xs mt-1">
+            @if (passwordInput.errors?.['required']) {
+              <p>Password is required</p>
+            }
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-slate-900 text-white py-3 rounded-xl text-sm font-bold hover:bg-slate-700 transition-colors"
+      >
+        Sign in
+      </button>
+    </form>
+
+    <p class="text-center text-sm text-slate-500 mt-6">
+      Don't have an account?
+      <a routerLink="/register" class="text-slate-900 font-semibold hover:underline">Sign up</a>
+    </p>
+  </div>
+</div>

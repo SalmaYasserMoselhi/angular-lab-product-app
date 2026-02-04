@@ -1,0 +1,45 @@
+<a
+  [routerLink]="['/product', product.id]"
+  class="group block bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+>
+  <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-50 overflow-hidden relative">
+    <img
+      [src]="product.image"
+      [alt]="product.title"
+      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+    />
+    @if (product.stock === 0) {
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <span class="bg-white text-slate-900 text-xs px-4 py-2 font-medium uppercase tracking-wider"
+          >Sold out</span
+        >
+      </div>
+    }
+  </div>
+  <div class="p-4 md:p-5">
+    <p class="text-[10px] md:text-xs text-slate-400 uppercase tracking-widest mb-2">
+      {{ product.brand }}
+    </p>
+    <h3
+      class="text-sm md:text-base font-medium text-slate-800 mb-3 line-clamp-1 group-hover:text-slate-600 transition-colors"
+    >
+      {{ product.title }}
+    </h3>
+    <div class="flex items-center justify-between">
+      <span class="text-base md:text-lg font-bold text-slate-900"
+        >{{ product.price }} <span class="text-sm font-normal text-slate-500">EGP</span></span
+      >
+      <div class="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-full">
+        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+        <span class="text-xs font-medium text-amber-700">{{ product.rating }}</span>
+      </div>
+    </div>
+  </div>
+  <button
+    (click)="addToCart($event)"
+    [disabled]="product.stock === 0"
+    class="w-full py-3 md:py-4 text-sm font-semibold bg-slate-900 text-white hover:bg-slate-700 transition-all duration-300 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
+  >
+    <i class="fa-solid fa-bag-shopping mr-2"></i>Add to cart
+  </button>
+</a>
