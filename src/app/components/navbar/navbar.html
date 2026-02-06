@@ -1,6 +1,6 @@
 <nav class="bg-slate-900 text-white py-4 px-4 md:px-6 sticky top-0 z-50 shadow-lg">
   <div class="container mx-auto flex justify-between items-center">
-    <a routerLink="/" class="text-lg md:text-xl font-bold tracking-tight">techstore</a>
+    <a routerLink="/" class="text-lg md:text-xl font-bold tracking-tight">Lomy's</a>
 
     <div class="flex gap-4 md:gap-8 items-center text-sm">
       <a
@@ -36,11 +36,11 @@
 
       <a routerLink="/cart" class="relative p-2 -mr-2 hover:text-slate-300 transition-colors">
         <i class="fa-solid fa-bag-shopping text-lg"></i>
-        @if (cartService.items.length > 0) {
+        @if (cartService.totalCount > 0) {
           <span
             class="absolute -top-1 right-0 bg-red-500 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold"
           >
-            {{ cartService.items.length }}
+            {{ cartService.totalCount }}
           </span>
         }
       </a>

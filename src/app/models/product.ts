@@ -6,7 +6,10 @@ export interface Product {
   discountPercentage: number;
   rating: number;
   stock: number;
-  brand: string;
+  brand?: string;
   category: string;
+  thumbnail?: string;
   image: string;
 }
+
+

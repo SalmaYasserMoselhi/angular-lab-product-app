@@ -21,7 +21,7 @@
           class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all"
           [class.border-red-500]="email?.invalid && (email?.touched || submitted)"
           [class.border-slate-200]="!(email?.invalid && (email?.touched || submitted))"
-          placeholder="you@example.com"
+          placeholder="user@example.com"
         />
         @if (email?.invalid && (email?.touched || submitted)) {
           <div class="text-red-500 text-xs mt-1">
@@ -93,7 +93,7 @@
             @if (password?.errors?.['pattern']) {
               <p>
                 Password must be at least 8 characters with uppercase, lowercase, digit, and special
-                character (*&#64;%$#!&)
+                character
               </p>
             }
           </div>
